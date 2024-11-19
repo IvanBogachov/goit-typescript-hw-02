@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { Toaster } from 'react-hot-toast';
 
 import './App.css';
-import fetchGalleryPhotos from '../../api/api-photos.js';
+import fetchGalleryPhotos from '../../api/api-photos';
 
 import SearchBar from '../SearchBar/SearchBar';
 import ImageGallery from '../ImageGallery/ImageGallery';
