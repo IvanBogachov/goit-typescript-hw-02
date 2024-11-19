@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Toaster } from 'react-hot-toast';
+import { Photo, FetchGalleryPhotosResponse } from '../types';
 
 import './App.css';
 import fetchGalleryPhotos from '../../api/api-photos';
@@ -12,18 +13,18 @@ import LoadMoreBtn from '../LoadMoreBtn/LoadMoreBtn';
 import ImageModal from '../ImageModal/ImageModal';
 
 function App() {
-  const [page, setPage] = useState(1);
-  const [queryValue, setQueryValue] = useState('');
-  const [gallery, setGallery] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isError, setIsError] = useState(false);
-  const [totalPages, setTotalPages] = useState(0);
+  const [page, setPage] = useState<number>(1);
+  const [queryValue, setQueryValue] = useState<string>('');
+  const [gallery, setGallery] = useState<Photo[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isError, setIsError] = useState<boolean>(false);
+  const [totalPages, setTotalPages] = useState<number>(0);
 
-  const [modalIsOpen, setIsOpen] = useState(false);
-  const [modalImage, setModalImage] = useState('');
-  const [altDescription, setAltDescription] = useState('');
+  const [modalIsOpen, setIsOpen] = useState<boolean>(false);
+  const [modalImage, setModalImage] = useState<string>('');
+  const [altDescription, setAltDescription] = useState<string>('');
 
-  const ref = useRef();
+  const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (queryValue === '') return;
@@ -32,7 +33,10 @@ function App() {
       try {
         setIsLoading(true);
         setIsError(false);
-        const data = await fetchGalleryPhotos(queryValue, page);
+        const data: FetchGalleryPhotosResponse = await fetchGalleryPhotos(
+          queryValue,
+          page
+        );
         console.log('data: ', data);
         if (data.total === 0) return;
         setGallery((prevGallery) => {
@@ -51,10 +55,10 @@ function App() {
   useEffect(() => {
     if (page === 1) return;
 
-    ref.current.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    ref.current?.scrollIntoView({ behavior: 'smooth', block: 'end' });
   }, [page, gallery]);
 
-  const handleQuery = (newQuery) => {
+  const handleQuery = (newQuery: string) => {
     setQueryValue(newQuery);
     setGallery([]);
     setPage(1);
@@ -74,7 +78,7 @@ function App() {
     setIsOpen(false);
   };
 
-  const updateModalStateData = (src, alt) => {
+  const updateModalStateData = (src: string, alt: string) => {
     setModalImage(src);
     setAltDescription(alt);
   };
