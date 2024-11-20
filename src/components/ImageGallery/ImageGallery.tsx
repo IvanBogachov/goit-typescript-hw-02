@@ -2,11 +2,11 @@ import ImageCard from '../ImageCard/ImageCard';
 import { Photo } from '../types';
 import styles from './ImageGallery.module.css';
 
-type Props = {
+interface Props {
   gallery: Photo[];
   openModal: () => void;
   updateModalStateData: (url: string, alt: string) => void;
-};
+}
 
 const ImageGallery: React.FC<Props> = ({
   gallery,
