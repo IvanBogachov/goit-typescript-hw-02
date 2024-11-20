@@ -1,13 +1,7 @@
 import styles from './ImageCard.module.css';
-import { PhotoUrls } from '../types';
+import { ImageCardProps } from '../types';
 
-interface Props {
-  alt_description: string;
-  urls: PhotoUrls;
-  updateModalStateData: (url: string, alt: string) => void;
-  openModal: () => void;
-}
-const ImageCard: React.FC<Props> = ({
+const ImageCard: React.FC<ImageCardProps> = ({
   alt_description,
   urls,
   updateModalStateData,

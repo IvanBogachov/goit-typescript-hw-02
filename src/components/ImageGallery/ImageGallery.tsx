@@ -1,14 +1,8 @@
 import ImageCard from '../ImageCard/ImageCard';
-import { Photo } from '../types';
+import { ImageGalleryProps } from '../types';
 import styles from './ImageGallery.module.css';
 
-interface Props {
-  gallery: Photo[];
-  openModal: () => void;
-  updateModalStateData: (url: string, alt: string) => void;
-}
-
-const ImageGallery: React.FC<Props> = ({
+const ImageGallery: React.FC<ImageGalleryProps> = ({
   gallery,
   openModal,
   updateModalStateData,

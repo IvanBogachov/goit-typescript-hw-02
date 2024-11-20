@@ -1,8 +1,9 @@
-interface Props {
-  handleLoadMore: () => void;
-  isActive: boolean;
-}
-const LoadMoreBtn: React.FC<Props> = ({ handleLoadMore, isActive }) => {
+import { LoadMoreBtnProps } from '../types';
+
+const LoadMoreBtn: React.FC<LoadMoreBtnProps> = ({
+  handleLoadMore,
+  isActive,
+}) => {
   return (
     <button onClick={handleLoadMore} type='button' disabled={isActive}>
       Load more
