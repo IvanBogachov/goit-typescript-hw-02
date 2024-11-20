@@ -96,7 +96,7 @@ function App() {
       {isLoading && <Loader />}
       {isError && <ErrorMessage />}
       {gallery.length > 0 && !isLoading && !isError && isActive && (
-        <LoadMoreBtn handleLoadMore={handleLoadMore} />
+        <LoadMoreBtn handleLoadMore={handleLoadMore} isActive={!isActive} />
       )}
       <ImageModal
         modalIsOpen={modalIsOpen}
