@@ -58,27 +58,27 @@ function App() {
     ref.current?.scrollIntoView({ behavior: 'smooth', block: 'end' });
   }, [page, gallery]);
 
-  const handleQuery = (newQuery: string) => {
+  const handleQuery = (newQuery: string): void => {
     setQueryValue(newQuery);
     setGallery([]);
     setPage(1);
   };
 
-  const handleLoadMore = () => {
+  const handleLoadMore = (): void => {
     setPage(page + 1);
   };
 
   const isActive = useMemo(() => page < totalPages, [page, totalPages]);
 
-  const openModal = () => {
+  const openModal = (): void => {
     setIsOpen(true);
   };
 
-  const closeModal = () => {
+  const closeModal = (): void => {
     setIsOpen(false);
   };
 
-  const updateModalStateData = (src: string, alt: string) => {
+  const updateModalStateData = (src: string, alt: string): void => {
     setModalImage(src);
     setAltDescription(alt);
   };
